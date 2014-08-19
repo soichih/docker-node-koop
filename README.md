@@ -1,6 +1,8 @@
-** Dockerfile for node-koop
+# Dockerfile for node-koop
 
 This Dockerfile installs node-koop and various data providers (git, gist, socrata).
+
+## Build
 
 You can use this Dockerfile to build node-koop instance by doing following.
 
@@ -17,11 +19,17 @@ git clone https://github.com/soichih/docker-node-koop.git
 docker build -t koop .
 ```
 
-* Starting up your service
+This will take about 10-20 minutes. If you are in a hurry, you are free to use pull my built instance from Dockerhub.
+
+```
+docker pull soichih/koop
+```
+
+## Start koop
 
 1. Create default.yaml
 
-You need to add default.yaml containing your github token, etc.. If you are using Docker postgres instance, you should be 
+You need to add default.yaml containing your github token, etc.. If you are using Docker postgres container, you should be 
 able to leave the postgis configuration the same as below.
 
 ```
@@ -31,7 +39,7 @@ server:
 logfile: '/var/log/koop.log'
 data_dir: '/usr/local/koop/'
 
-github_token: 'ad0c275487931dabef79076bbfc7a112e4bb3abd'
+github_token: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 db:
   postgis:
@@ -52,6 +60,6 @@ docker run -d --link koop-postgres:db -v `pwd`/default.yml:/koop/config/default.
 
 4. Happy Testing!
 
-Browse to http://<your docker host>:49163/
+Browse to http://[your docker host]:49163/
 
 
