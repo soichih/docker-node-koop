@@ -1,0 +1,25 @@
+# Default config
+server:
+  port: 8080
+
+logfile: '/var/log/koop.log'
+
+# the local dir for storing tile files
+data_dir: '/usr/local/koop/'
+
+# for accessing github
+github_token: 'ad0c275487931dabef79076bbfc7a112e4bb3abd'
+
+
+#### Database config ####
+
+# the connection to your PostGIS enabled database
+db:
+  postgis:
+    conn: "postgres://docker:docker@db/postgres"
+
+# for local development you can use Spatialite
+#db:
+#  sqlite:
+#    filename: ':memory:'
+

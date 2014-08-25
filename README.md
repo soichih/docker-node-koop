@@ -46,16 +46,16 @@ db:
     conn: "postgres://postgres@db/postgres"
 ```
 
-2. Start up postgres container
+2. Start up postgit container
 
 ```
-docker run --name koop-postgres -d postgres
+docker run -d --name koop-postgis soichih/postgis
 ```
 
 3. Finally, start your koop and link to your postgres instance (adjust your -p to whichever the port that you want to expose your koop on)
 
 ```
-docker run -d --link koop-postgres:db -v `pwd`/default.yml:/koop/config/default.yml -p 49163:8080 --name mykoop koop
+docker run -d --link koop-postgis:db -v `pwd`/default.yml:/koop/config/default.yml -p 49163:8080 --name mykoop koop
 ```
 
 4. Happy Testing!
